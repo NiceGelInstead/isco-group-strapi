@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+/* ./src/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NEW PRE-CSS (Pre CSS yang sudah di modifikasi sesuai dengan amgif */
+/* ISO - ISCO Standarized Option (Mohon ikuti standarisasi ISO :D ) */
+
+/* MAX WIDTH Body Contents (Safe area screen LEBAR) */
+.isco-width-safe-area {
+    @apply max-w-screen-xl;
+}
+
+/* PADDING X Body Content (Safe area screen KECIL) */
+.isco-padding-safe-area {
+    @apply px-4;
+    @apply md:px-7;
+    @apply lg:px-14;
+}
+
+/* SPACE BREAK diantara section (Agar konsisten spasinya) */
+.isco-space-break{
+    @apply py-20;
+}
+
+/* ROUNDED Standar (untuk card-card) */
+.isco-rounded-default {
+    @apply rounded-2xl;
+}
+
+/* COMMON SECTION Container untuk Konsistensi dan Standarisasi (Digunakan untuk NON-hero) */
+.isco-container-luar {
+    @apply w-full isco-space-break;
+}
+.isco-container-dalam {
+    @apply isco-width-safe-area isco-padding-safe-area mx-auto;
+}
+
+/* TEXT ALIGN for Mobile (saya malas copas...) */
+.isco-text-align-responsive {
+    @apply text-center lg:text-start;
+}
+
+/* HEADING Base (bisa di override di class) */
+@layer base {
+    h1 {
+        @apply font-bold text-white;
+        @apply text-4xl lg:text-5xl;
+        @apply isco-text-align-responsive;
+    }
+    h2 {
+        @apply font-semibold text-primary;
+        @apply text-xl lg:text-2xl;
+        @apply isco-text-align-responsive;
+    }
+    h3 {
+        @apply font-bold text-black;
+        @apply text-3xl lg:text-4xl;
+        @apply isco-text-align-responsive;
+    }
+    h4 {
+        @apply font-bold text-black;
+        @apply text-2xl lg:text-3xl;
+        @apply text-center;
+    }
+}
+
+/* DESCRIPTION (deskripsi pendek dibawah judul) */
+.isco-hero-description {
+    @apply font-medium text-white;
+    @apply text-base lg:text-lg;
+    @apply isco-text-align-responsive;
+}
+.isco-section-description {
+    @apply font-medium text-black;
+    @apply text-base;
+    @apply isco-text-align-responsive;
+}
+
+/* CTA (Make sure VERY consistent -Map) */
+.isco-button-cta {
+    @apply space-x-2 px-5 py-2.5 isco-rounded-default border-0 flex items-center ;
+    @apply font-semibold text-lg; 
+    @apply text-white bg-accent hover:bg-accent;
+    @apply transition-transform duration-300 transform hover:scale-105;
+}
+.isco-button-secondary {
+    @apply space-x-2 px-4 py-2 isco-rounded-default border-2 flex items-center ;
+    @apply font-semibold text-lg; 
+    @apply text-white bg-transparent hover:bg-accent border-white;
+    @apply transition-transform duration-300 transform hover:scale-105;
+}
+
+/* CARD Pelayanan (beberapa elemen diluar app.css, karena @apply tidak berfungsi, mohon lihat kodenya dahulu) */
+.isco-card-pelayanan {
+    @apply gap-4 py-8 isco-rounded-default border-2 flex flex-col justify-center items-center;
+    @apply bg-white border-border hover:border-primary;
+    @apply transition duration-300;
+}
