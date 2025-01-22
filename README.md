@@ -31,9 +31,9 @@ npm run dev
 
 1. If you encounter `EADDRINUSE` error, make sure you **run Strapi first** then Vue.
 
-## Devs not
+## Devs note
 
-**Article** api at `/api/articles`
+**Article** api at `/api/articles?populate=*`
 
 ## Extras
 
