@@ -1,3 +1,38 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
+# ISCO Group website
 
-Learn more at https://developers.google.com/idx/guides/customize-idx-env
+A wannabe Wordpress-like, CMS-centric, content-first website, but we don't want to use it. So we try lots of workaround and gerrymandering to make it happen.
+
+Built with [Strapi](https://docs.strapi.io/dev-docs/intro), [Vue.js](https://vuejs.org/guide/introduction.html), and [Tailwind CSS](https://tailwindcss.com/docs/installation)
+
+## Before started
+
+1. Make sure you have `npm` and `mysql`
+2. Create database with name `isco_group`
+
+## How to run
+
+#### Run the Strapi first
+
+```bash
+cd strapi
+npm install
+npm run develop
+```
+
+#### Then run the Vue
+
+```bash
+cd vue
+npm install
+npm run dev
+```
+
+## Common errors
+
+1. If you encounter `EADDRINUSE` error, make sure you **run Strapi first** then Vue.
+
+## Devs note
+
+It's okay, you just gotta do it -Map
+
+If you wandering about license, nope. We'll do it later.
