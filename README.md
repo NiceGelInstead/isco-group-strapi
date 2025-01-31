@@ -33,7 +33,13 @@ npm run dev
 
 ## Devs note
 
-**Article** api at `/api/articles?populate=*`
+#### Quick API References
+
+To populate **all**, use `/api/members?populate=*`
+
+To get specific using **documentId**, use `/api/members/dskbvgdnx2n98op5ayopab7a`
+
+To get individual via **filter**, use `api/members/?filters[Nama][$eq]=Soph`
 
 ## Extras
 

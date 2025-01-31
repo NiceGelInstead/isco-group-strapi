@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "singularName": "member",
+    "pluralName": "members",
+    "displayName": "Member"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nama": {
+      "type": "string"
+    },
+    "isMasihBerlaku": {
+      "type": "boolean"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Foto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "idMember": {
+      "type": "uid",
+      "targetField": "Nama"
+    },
+    "Biodata": {
+      "type": "richtext"
+    },
+    "NomorKTA": {
+      "type": "biginteger"
+    }
+  }
+}
