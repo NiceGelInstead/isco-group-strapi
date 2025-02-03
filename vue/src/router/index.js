@@ -6,7 +6,7 @@ import MemberProfile from '../views/MemberProfile.vue';
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
-  { path: '/members/:id', component: MemberProfile }
+  { path: '/players/:id', component: MemberProfile }
 ];
 
 const router = createRouter({

@@ -1,8 +1,8 @@
 <template>
 <div class="p-6">
-    <h1 class="text-4xl text-primary font-bold mb-8">ISCO Membership</h1>
+    <h1 class="text-4xl text-primary font-bold mb-8">ISCO playership</h1>
     <div>
-      <h2 class="text-2xl font-semibold mb-6">Members</h2>
+      <h2 class="text-2xl font-semibold mb-6">players</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- <article
           v-for="article in articles"
@@ -22,93 +22,60 @@
             </p>
           </div>
         </article> -->
-        <member
-          v-for="member in members"
-          :key="member.id"
+        <player
+          v-for="player in players"
+          :key="player.id"
           class="bg-white shadow-md rounded-lg overflow-hidden"
         >
         <img
-  v-if="member.Foto && member.Foto.url"
-  :src="STRAPI_URL + member.Foto.url"
-  alt="member Image"
-  class="w-full h-48 object-cover"
-/>
-<img
-  v-else
-  src="" 
-  alt="Default Member Image"
-  class="w-full h-48 object-cover"
-/>
+          :src="player.Photo?.url ? STRAPI_URL + player.Photo.url : ''"
+          alt="Player Image"
+          class="w-full h-48 object-cover"
+        />
           <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">{{ member.Nama }}</h3>
-            <p class="text-gray-600 mb-4">{{ member.Email }}</p>
+            <h3 class="text-lg font-bold mb-2">{{ player.Name }}</h3>
+            <p class="text-gray-600 mb-4">{{ player.EmergencyContact }}</p>
             <p class="text-sm text-gray-500">
-              Published: {{ formatDate(member.publishedAt) }}
+              Published: {{ formatDate(player?.TimeOfDeath) }}
             </p>
           </div>
           <div class="p-4">
-    <h2 class="text-lg font-semibold">{{ member.idMember }}</h2>
+    <h2 class="text-lg font-semibold">{{ player.uid }}</h2>
     <router-link
-      :to="`/members/${member.documentId}`"
+      :to="`/players/${player.documentId}`"
       class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded"
     >
       Check their profile
     </router-link>
   </div>
-        </member>
+        </player>
       </div>
     </div>
   </div>
 </template>
 
-  <script setup>
-// Import dependencies
+<script setup>
 import { ref, onMounted } from "vue";
 
-// Strapi Base URL
-const STRAPI_URL = "http://localhost:1337";
+const STRAPI_URL = "https://admin.testjellysuper.my.id";
+const players = ref([]);
 
-// Variables
-const articles = ref([]);
-
-// Fetch articles
-const getArticles = async () => {
-  const response = await fetch(`${STRAPI_URL}/api/articles?populate=*`);
-  const data = await response.json();
-  articles.value = data.data;
-};
-
-// Format date
-const formatDate = (date) => {
-  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  return new Date(date).toLocaleDateString("en-US", options);
-};
-
-// Fetch articles on component mount
-onMounted(() => {
-  getArticles();
-});
-
-// Variables
-const members = ref([]);
-
-// Fetch members
-const getMembers = async () => {
+// Fetch Players Data
+const getPlayers = async () => {
   try {
-    const response = await fetch(`${STRAPI_URL}/api/members?populate=*`);
+    const response = await fetch(`${STRAPI_URL}/api/players?populate=*`);
     const data = await response.json();
-    members.value = data.data;
+    players.value = data.data;
   } catch (error) {
-    console.error("Error fetching members:", error);
+    console.error("Error fetching players:", error);
   }
 };
 
+// Format Date Function
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
+};
 
-
-// Fetch members on component mount
-onMounted(() => {
-  getMembers();
-});
-
-
+// Fetch players when the component is mounted
+onMounted(getPlayers);
 </script>
